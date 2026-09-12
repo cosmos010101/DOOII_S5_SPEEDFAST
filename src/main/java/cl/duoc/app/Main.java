@@ -37,6 +37,8 @@ public class Main {
         zonaDeCarga.agregarPedido(pedido4);
         zonaDeCarga.agregarPedido(pedido5);
 
+        System.out.println("\nPedidos han llegado a la zona de carga.");
+
         pedidos.add(pedido1);
         pedidos.add(pedido2);
         pedidos.add(pedido3);
