@@ -1,12 +1,14 @@
 package cl.duoc.models;
 
+import cl.duoc.service.EstadoPedido;
+
 public class PComida extends Pedido {
 
     String restaurante;
     int tiempoPreparacion;
 
-    public PComida(int idPedido, String cliente, String direccionEntrega, int distanciaKm, String restaurante, int tiempoPreparacion) {
-        super(idPedido, cliente, direccionEntrega, distanciaKm);
+    public PComida(int idPedido, String cliente, String direccionEntrega, int distanciaKm, String restaurante, int tiempoPreparacion, EstadoPedido estadoPedido) {
+        super(idPedido, cliente, direccionEntrega, distanciaKm, estadoPedido);
         this.restaurante = restaurante;
         this.tiempoPreparacion = tiempoPreparacion;
     }
@@ -29,14 +31,14 @@ public class PComida extends Pedido {
     }
 
     @Override
-    public void mostrarResumen() {
-        System.out.println("\n.....Detalle del pedido de comida.....");
-        System.out.println("Id Pedido: " + idPedido);
-        System.out.println("Restaurante: " + restaurante);
-        System.out.println("Tiempo de preparación: " + tiempoPreparacion + " minutos.");
-        System.out.println("Dirección de entrega: " + direccionEntrega);
-        System.out.println("Distancia: " + distanciaKm + " kilómetros");
-        System.out.println("Tiempo de entrega estimado: " + calcularTiempoEntrega() + " minutos.");
+    public String toString() {
+        return "\n.....Detalle del pedido de comida....." +
+                "\nId Pedido: " + idPedido +
+                "\nRestaurante: " + restaurante +
+                "\nTiempo de preparación: " + tiempoPreparacion + " minutos." +
+                "\nDirección de entrega: " + direccionEntrega +
+                "\nDistancia: " + distanciaKm + " kilómetros" +
+                "\nTiempo de entrega estimado: " + calcularTiempoEntrega() + " minutos.";
     }
 
     @Override

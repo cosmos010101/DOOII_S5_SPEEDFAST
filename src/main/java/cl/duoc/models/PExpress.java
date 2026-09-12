@@ -1,11 +1,13 @@
 package cl.duoc.models;
 
+import cl.duoc.service.EstadoPedido;
+
 public class PExpress extends Pedido {
 
     String tienda;
 
-    public PExpress(int idPedido, String cliente, String direccionEntrega, int distanciaKm, String tienda) {
-        super(idPedido, cliente, direccionEntrega, distanciaKm);
+    public PExpress(int idPedido, String cliente, String direccionEntrega, int distanciaKm, String tienda, EstadoPedido estadoPedido) {
+        super(idPedido, cliente, direccionEntrega, distanciaKm, estadoPedido);
         this.tienda = tienda;
     }
 
@@ -30,13 +32,13 @@ public class PExpress extends Pedido {
     }
 
     @Override
-    public void mostrarResumen() {
-        System.out.println("\n.....Detalle de Pedido Express.....");
-        System.out.println("Id Pedido: " + idPedido);
-        System.out.println("Tienda: " + tienda);
-        System.out.println("Dirección de entrega: " + direccionEntrega);
-        System.out.println("Distancia: " + distanciaKm + " kilómetros");
-        System.out.println("Tiempo de entrega estimado: " + calcularTiempoEntrega() + " minutos");
+    public String toString() {
+        return "\n.....Detalle de Pedido Express....." +
+                "\nId Pedido: " + idPedido +
+                "\nTienda: " + tienda +
+                "\nDirección de entrega: " + direccionEntrega +
+                "\nDistancia: " + distanciaKm + " kilómetros" +
+                "\nTiempo de entrega estimado: " + calcularTiempoEntrega() + " minutos";
     }
 
     @Override

@@ -1,12 +1,14 @@
 package cl.duoc.models;
 
+import cl.duoc.service.EstadoPedido;
+
 public class PEncomienda extends Pedido {
 
     String peso;
     String volumen;
 
-    public PEncomienda(int idPedido, String cliente, String direccionEntrega, int distanciaKm, String peso, String volumen) {
-        super(idPedido, cliente, direccionEntrega, distanciaKm);
+    public PEncomienda(int idPedido, String cliente, String direccionEntrega, int distanciaKm, String peso, String volumen, EstadoPedido estadoPedido) {
+        super(idPedido, cliente, direccionEntrega, distanciaKm, estadoPedido);
         this.peso = peso;
         this.volumen = volumen;
     }
@@ -28,14 +30,14 @@ public class PEncomienda extends Pedido {
     }
 
     @Override
-    public void mostrarResumen() {
-        System.out.println("\n.....Detalle de encomienda.....");
-        System.out.println("Id Pedido: " + idPedido);
-        System.out.println("Peso: " + peso);
-        System.out.println("Volumen: " + volumen);
-        System.out.println("Dirección de entrega: " + direccionEntrega);
-        System.out.println("Distancia: " + distanciaKm + " kilómetros");
-        System.out.println("Tiempo de entrega estimado: " + calcularTiempoEntrega() + " minutos");
+    public String toString() {
+        return "\n.....Detalle de encomienda....." +
+                "\nId Pedido: " + idPedido +
+                "\nPeso: " + peso +
+                "\nVolumen: " + volumen +
+                "\nDirección de entrega: " + direccionEntrega +
+                "\nDistancia: " + distanciaKm + " kilómetros" +
+                "\nTiempo de entrega estimado: " + calcularTiempoEntrega() + " minutos";
     }
 
     @Override
@@ -55,6 +57,6 @@ public class PEncomienda extends Pedido {
 
     @Override
     public void verHistorial() {
-        System.out.println("- Pedido de Encomienda #" + idPedido + " - " + direccionEntrega + ".");
+        System.out.println("- Pedido de encomienda #" + idPedido + " - " + direccionEntrega + ".");
     }
 }
